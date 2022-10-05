@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="2/18/2011 11:26:25 AM"
@@ -7,12 +7,12 @@
   DTS:CreatorName="NTDOMAIN\Sandra contreras"
   DTS:DTSID="{D7CA9AE1-BE52-4550-A34E-848D545937B3}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
   DTS:LocaleID="1033"
   DTS:ObjectName="OrderReleaseDate_Warning"
   DTS:PackageType="5"
-  DTS:VersionBuild="182"
-  DTS:VersionGUID="{973C8B7D-8EAE-4B32-BA36-0F812FDF0218}">
+  DTS:VersionBuild="183"
+  DTS:VersionGUID="{681B25AB-741D-45E1-A2FD-498247575AC3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,6 +23,8 @@
       DTS:ObjectName="HQ-SQL01.Salesforce_Backups">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=HQ-SQL01;Initial Catalog=Salesforce_Backups;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -33,6 +35,8 @@
       DTS:ObjectName="Order ReleaseDate Warning">
       <DTS:ObjectData>
         <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\hq-file01\Departments\Business Systems\Private\SQL Server Agent Jobs\HQ-SQL01\Reports\OrderReleaseDateWarning.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -942,7 +946,7 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="136,44"
           Id="Package\Count of Occurances"
@@ -952,6 +956,14 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
           Id="Package\Order ReleaseDate Warning"
           TopLeft="35.5,479.933962264151" />
         <NodeLayout
+          Size="205,42"
+          Id="Package\Remove Temp file if exists"
+          TopLeft="110,91" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Rename Template"
+          TopLeft="106,200" />
+        <NodeLayout
           Size="152,42"
           Id="Package\Send Mail Task"
           TopLeft="61.6698113207547,561.915094339623" />
@@ -960,7 +972,7 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
           TopLeft="140.471698113207,413.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,66.433962264151"
               Start="0,0"
               End="0,58.933962264151">
@@ -984,7 +996,7 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
           TopLeft="139.584905660377,521.933962264151">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.981132075472"
               Start="0,0"
               End="0,32.481132075472">
@@ -1001,20 +1013,12 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="205,42"
-          Id="Package\Remove Temp file if exists"
-          TopLeft="110,91" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\Rename Template"
-          TopLeft="106,200" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="212.5,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-23,67"
               Start="0,0"
               End="-23,59.5">
@@ -1048,7 +1052,7 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
           TopLeft="189.5,242">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="-50.056603773585,127.5"
               Start="0,0"
               End="-50.056603773585,120">
@@ -1077,6 +1081,13 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="2022.10.05 - JMc - Add Annotation"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="214,60"
+          Id="8647b80c-d54a-49dc-8d0b-014fc12d1306"
+          TopLeft="618,98" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1169,14 +1180,6 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Order ReleaseDate Warning\Order ReleaseDate Warning">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Order ReleaseDate Warning\Order Release Date Warning">
     <Properties>
       <Property>
@@ -1186,6 +1189,14 @@ where soh.rsca_Release_Sales_Order__c = 'false' and soh.rsca_Released_Date__c IS
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Order ReleaseDate Warning\Order ReleaseDate Warning">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
